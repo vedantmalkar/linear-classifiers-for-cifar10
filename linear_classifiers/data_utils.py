@@ -32,6 +32,9 @@ def preprocess_data(X_train, Y_train, X_test, Y_test):
     X_train -= mean_image   # highlights diffrence b/w imgs
     X_test -= mean_image
     
+    X_train /= 255.0        #reduce scale
+    X_test /= 255.0
+
     X_train = np.hstack([X_train, np.ones((X_train.shape[0], 1))])  #add bias (1) 
     X_test = np.hstack([X_test, np.ones((X_test.shape[0], 1))])
     print("preprocessed CIFAR data")

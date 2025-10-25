@@ -42,6 +42,29 @@ def train(X_train, Y_train, X_val, Y_val, loss_function, learning_rate=0.001, re
     
     return W, loss_history, train_acc_history, val_acc_history
 
+def visualize_weights(W):
+    W_visual = W[:-1, :]  
+    W_img = W_visual.T.reshape(10, 3, 32, 32)
+    W_img = W_img.transpose(0, 2, 3, 1)
+    W_min, W_max = W_img.min(), W_img.max()
+    W_img = (W_img - W_min) / (W_max - W_min)
+
+    classes = ['plane', 'car', 'bird', 'cat', 'deer',
+               'dog', 'frog', 'horse', 'ship', 'truck']
+    
+    fig, axes = plt.subplots(2, 5, figsize=(15, 6))
+
+    for i, ax in enumerate(axes.flat):
+        ax.imshow(W_img[i])
+
+        ax.set_title(f'{classes[i]}', fontsize=12, fontweight='bold')
+
+        ax.axis('off')
+
+    plt.tight_layout()
+    plt.show()
+
+
 def plot_stats(loss_history, train_acc_history, val_acc_history):
     plt.figure(figsize=(12, 4))
     
@@ -92,6 +115,7 @@ def main():
     print(f'\nTest accuracy: {test_acc:.3f}')
     
     plot_stats(loss_hist, train_acc, val_acc)
-
+    visualize_weights(W)
+    
 if __name__ == '__main__':
     main()

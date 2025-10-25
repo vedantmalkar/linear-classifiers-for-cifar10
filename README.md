@@ -13,7 +13,7 @@ The softmax function takes the raw scores produced by a linear classifier for ea
 These probabilities are then converted into loss by calculating the cross-entropy loss and adding a L2 regularization term to prevent overfitting
 
 <p align="center">
-  <img src="media/corss_entropy.png" alt="Cross Entropy" width="300"/>
+  <img src="media/cross_entropy.png" alt="Cross Entropy" width="300"/>
 </p>
 
 
@@ -49,10 +49,14 @@ python linear_classifiers/train.py --model svm --lr 1e-3 --reg 1e-4 --epochs 20
   <img src="media/SVM_train.png" alt="SVM Training Results" width="700"/>
 </p>
 
-an accuracy of about 31% was achieved for the training set using SVM and the traning loss consistently decreased
+an accuracy of about 40.0% was achieved for the training set using SVM and the traning loss consistently decreased, weights were visualized as shown:
 
+<p align="center">
+  <img src="media/SVM_weight.png" alt="SVM Training Results" width="700"/>
+</p>
 
-After training the Softmax classifier for 30 epochs with a learning rate of 0.001 and a regularization strength of 0.0005, the following results were recieved:.
+---
+After training the Softmax classifier for 30 epochs with a learning rate of 0.001 and a regularization strength of 0.0005, the following results were recieved:
 
 ```
 python linear_classifiers/train.py --model softmax --lr 1e-3 --reg 5e-4 --epochs 30
@@ -61,9 +65,14 @@ python linear_classifiers/train.py --model softmax --lr 1e-3 --reg 5e-4 --epochs
   <img src="media/softmax_train.png" alt="Softmax Training Results" width="700"/>
 </p>
 
-an accuracy of about 30.8% was achieved for the training set using softmax and the traning loss consistently decreased
+an accuracy of about 38.2% was achieved for the training set using softmax and the traning loss consistently decreased, weights were visualized as shown:
 
-After gradient checking an average relative error of 10^-9 was observed for SOFTMAX GRADIENT and an average relative error of 10^-11 was observed for CHECKING SVM GRADIENT:
+<p align="center">
+  <img src="media/softmax_weight.png" alt="Softmax Training Results" width="700"/>
+</p>
+
+---
+After gradient checking an average relative error of 10^-9 was observed for SOFTMAX GRADIENT and an average relative error of 10^-9 was observed for SVM GRADIENT:
 
 <p align="center">
   <img src="media/grad_check.png" alt="Softmax Training Results" width="700"/>
