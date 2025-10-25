@@ -18,7 +18,7 @@ These probabilities are then converted into loss by calculating the cross-entrop
 
 
 ### SVM Classifier (Hinge loss):
-Hinge loss computes the difference between each incorrect class score and the correct class score plus the margin, if this value is positive the margin is added to the loss other wise nothing is added. 
+Hinge loss computes the difference between each incorrect class score and the correct class score plus the margin, if this value is positive the margin is added to the loss other wise nothing is added
 
 <p align="center">
   <img src="media/SVM_loss.png" alt="SVM Loss" width="300"/>
@@ -26,12 +26,18 @@ Hinge loss computes the difference between each incorrect class score and the co
 
 
 ### SGD Optimizer:
-To optimize these losses and make them as low as possible, the SGD optimizer repeatedly updates the weights in the direction of the negative gradient.
+To optimize these losses and make them as low as possible, the SGD optimizer repeatedly updates the weights in the direction of the negative gradient
 
 <p align="center">
   <img src="media/SGD.png" alt="SGD Optimizer" width="300"/>
 </p>
 
+### Gradient Check:
+Gradient checking is used to verify that the gradients computed by the code is correct, it compares them to numerical gradients calculated using a small finite difference approximation
+
+<p align="center">
+  <img src="media/numerical_gradient.png" alt="SGD Optimizer" width="300"/>
+</p>
 
 ## Results
 After training the SVM model for 20 epochs with a learning rate of 0.001 and regularization strength of 0.0001, the following results were recieved:
@@ -56,3 +62,9 @@ python linear_classifiers/train.py --model softmax --lr 1e-3 --reg 5e-4 --epochs
 </p>
 
 an accuracy of about 30.8% was achieved for the training set using softmax and the traning loss consistently decreased
+
+After gradient checking an average relative error of 10^-9 was observed for SOFTMAX GRADIENT and an average relative error of 10^-11 was observed for CHECKING SVM GRADIENT:
+
+<p align="center">
+  <img src="media/grad_check.png" alt="Softmax Training Results" width="700"/>
+</p>
